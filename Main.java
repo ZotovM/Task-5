@@ -5,23 +5,23 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.print("Введите высоту фигуры: ");
-        int h = readNum();
-        checkNum(h);
+        int h = readValue();
+        checkValue(h);
 
         System.out.print("Введите ширину фигуры: ");
-        int w = readNum();
-        checkNum(w);
+        int w = readValue();
+        checkValue(w);
 
         printFigure(h, w);
 
     }
 
-    private static int readNum() {
+    private static int readValue() {
         Scanner scn = new Scanner(System.in);
         return scn.nextInt();
     }
 
-    private static void checkNum(int x) {
+    private static void checkValue(int x) {
         if (x < 1) {
             System.out.println("Ошибка! Введите число больше единицы. ");
             System.exit(1);
@@ -29,15 +29,22 @@ public class Main {
     }
 
     public static void printFigure(int h, int w) {
-        for (int i = 0; i < h; i++) {
-            for (int j = 1; j <= w; j++) {
-                System.out.print("ab");
-
-            }
-
+        for (int rep = h; rep >= 1; rep--) {
             System.out.println();
+            for (int weight = w; weight >= 1;) {
+                for (char ab = 'a'; ab <= 'b'; ab++) {
+                    for (int i = 0; i < rep; i++) {
+                        if (weight == 0) {
+                            break;
+                        }
+                        System.out.print(ab);
+                        weight--;
+                    }
+                }
+            }
         }
-        System.exit(0);
     }
-
 }
+
+
+
